@@ -38,28 +38,28 @@ export const categories: Category[] = [
     id: 'cat_women',
     name: 'Women',
     description: 'Elegant dresses, tops, and accessories',
-    image: 'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1611091004178-7f10b2b44cf7?w=600&h=400&fit=crop',
     slug: 'women',
   },
   {
     id: 'cat_men',
     name: 'Men',
     description: 'Traditional and modern menswear',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1621786030484-4c855bbe6742?w=600&h=400&fit=crop',
     slug: 'men',
   },
   {
     id: 'cat_accessories',
     name: 'Accessories',
     description: 'Jewelry, bags, and more',
-    image: 'https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop',
     slug: 'accessories',
   },
   {
     id: 'cat_home',
     name: 'Home & Living',
     description: 'Decor and lifestyle essentials',
-    image: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600&h=400&fit=crop',
     slug: 'home',
   },
 ]
@@ -72,10 +72,10 @@ export const products: Product[] = [
     description: 'Stunning floor-length dress featuring vibrant African print patterns.',
     longDescription: 'This breathtaking Ankara maxi dress combines traditional African craftsmanship with contemporary design. Made from premium 100% cotton Ankara fabric, it features a flattering fitted bodice that flows into an elegant full skirt. Perfect for special occasions, weddings, or making a statement at any event. The bold geometric patterns tell a story of African heritage while the modern cut ensures you look effortlessly chic.',
     price: 45000, // 45,000 F CFA
-    image: 'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1611091004178-7f10b2b44cf7?w=600&h=600&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=800&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1611091004178-7f10b2b44cf7?w=800&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1611091262453-e3d99d1e13e7?w=800&h=800&fit=crop',
     ],
     category: 'women',
     tags: ['dress', 'ankara', 'occasion'],
@@ -91,7 +91,7 @@ export const products: Product[] = [
     description: 'Modern blouse with authentic Kente-inspired patterns.',
     longDescription: 'A beautiful fusion of tradition and modernity, this Kente print blouse brings the regal heritage of Ghana to your everyday wardrobe. The lightweight fabric makes it perfect for warm weather, while the timeless patterns ensure you stand out in any setting.',
     price: 22000, // 22,000 F CFA
-    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=600&h=600&fit=crop',
     category: 'women',
     tags: ['blouse', 'kente', 'casual'],
     inStock: true,
@@ -105,7 +105,7 @@ export const products: Product[] = [
     description: 'Versatile wrap skirt in bold African print.',
     longDescription: 'This versatile wrap skirt is a wardrobe essential. Featuring adjustable ties, it fits multiple sizes and can be styled in various ways. The vibrant African print adds a pop of color to any outfit.',
     price: 18000, // 18,000 F CFA
-    image: 'https://images.unsplash.com/photo-1582533561751-ef6f6ab93a2e?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1607823489283-1deb240f9e27?w=600&h=600&fit=crop',
     category: 'women',
     tags: ['skirt', 'wrap', 'casual'],
     inStock: true,
@@ -119,7 +119,7 @@ export const products: Product[] = [
     description: 'Comfortable tunic with intricate hand embroidery.',
     longDescription: 'Experience the artistry of West African embroidery with this stunning Dashiki tunic. Each piece features hand-stitched details around the neckline and sleeves, making every tunic unique.',
     price: 28000, // 28,000 F CFA
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=600&h=600&fit=crop',
     category: 'women',
     tags: ['tunic', 'dashiki', 'embroidered'],
     inStock: true,
@@ -136,7 +136,7 @@ export const products: Product[] = [
     longDescription: 'Make a grand entrance with this premium Agbada set. Consisting of the flowing outer robe (Agbada), inner shirt (Buba), and matching trousers (Sokoto), this outfit is perfect for weddings, ceremonies, and important celebrations. Crafted from rich Damask fabric with elegant embroidery.',
     price: 95000, // 95,000 F CFA
     compareAtPrice: 115000,
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1621786030484-4c855bbe6742?w=600&h=600&fit=crop',
     category: 'men',
     tags: ['agbada', 'traditional', 'occasion'],
     inStock: true,
@@ -151,7 +151,7 @@ export const products: Product[] = [
     description: 'Modern slim-fit shirt with bold African patterns.',
     longDescription: 'This contemporary Ankara shirt brings African flair to your everyday wardrobe. The slim-fit cut provides a modern silhouette, while the breathable cotton fabric ensures all-day comfort.',
     price: 20000, // 20,000 F CFA
-    image: 'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1622445275576-721325763afe?w=600&h=600&fit=crop',
     category: 'men',
     tags: ['shirt', 'ankara', 'casual'],
     inStock: true,
@@ -165,7 +165,7 @@ export const products: Product[] = [
     description: 'Elegant kaftan with detailed embroidery work.',
     longDescription: 'This elegant kaftan features exquisite embroidery around the neckline and cuffs. Perfect for Friday prayers, casual outings, or relaxed weekends, it combines comfort with sophistication.',
     price: 35000, // 35,000 F CFA
-    image: 'https://images.unsplash.com/photo-1549062572-544a64fb0c56?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1583391733981-8b530c07a7f0?w=600&h=600&fit=crop',
     category: 'men',
     tags: ['kaftan', 'traditional', 'embroidered'],
     inStock: true,
@@ -178,7 +178,7 @@ export const products: Product[] = [
     description: 'Classic Nigerian Senator style with modern tailoring.',
     longDescription: 'The Senator suit remains a timeless choice for the modern African man. This two-piece set features clean lines and expert tailoring, perfect for business meetings, formal events, or making an impression.',
     price: 55000, // 55,000 F CFA
-    image: 'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=600&fit=crop',
     category: 'men',
     tags: ['senator', 'formal', 'suit'],
     inStock: true,
@@ -194,7 +194,7 @@ export const products: Product[] = [
     description: 'Statement necklace featuring traditional African beadwork.',
     longDescription: 'Each bead in this stunning necklace is hand-selected and strung by skilled artisans. The colorful patterns draw inspiration from various African cultures, creating a unique piece that celebrates the continent\'s rich heritage.',
     price: 15000, // 15,000 F CFA
-    image: 'https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=600&fit=crop',
     category: 'accessories',
     tags: ['jewelry', 'necklace', 'beaded'],
     inStock: true,
@@ -208,7 +208,7 @@ export const products: Product[] = [
     description: 'Spacious tote bag with vibrant African print exterior.',
     longDescription: 'Carry a piece of Africa wherever you go with this beautiful Ankara tote bag. Featuring a sturdy canvas lining and genuine leather straps, it\'s both practical and stylish. Perfect for shopping, work, or weekend adventures.',
     price: 22000, // 22,000 F CFA
-    image: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=600&fit=crop',
     category: 'accessories',
     tags: ['bag', 'tote', 'ankara'],
     inStock: true,
@@ -222,7 +222,7 @@ export const products: Product[] = [
     description: 'Traditional Fulani-inspired brass earrings.',
     longDescription: 'These stunning earrings are inspired by traditional Fulani jewelry. Hand-hammered from solid brass and finished with a protective coating to prevent tarnishing, they add an authentic African touch to any outfit.',
     price: 10000, // 10,000 F CFA
-    image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1630019852942-f89202989a59?w=600&h=600&fit=crop',
     category: 'accessories',
     tags: ['jewelry', 'earrings', 'brass'],
     inStock: true,
@@ -251,7 +251,7 @@ export const products: Product[] = [
     description: 'Authentic Malian mudcloth pillow cover.',
     longDescription: 'Add a touch of African artistry to your home with this authentic mudcloth pillow cover. Made in Mali using traditional techniques passed down through generations, each piece features hand-painted geometric patterns.',
     price: 12000, // 12,000 F CFA
-    image: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600&h=600&fit=crop',
     category: 'home',
     tags: ['pillow', 'mudcloth', 'decor'],
     inStock: true,
@@ -265,7 +265,7 @@ export const products: Product[] = [
     description: 'Handwoven Kente cloth table runner.',
     longDescription: 'Transform your dining table with this magnificent Kente cloth table runner. Handwoven by skilled Ghanaian artisans using traditional techniques, it features the iconic geometric patterns that have made Kente famous worldwide.',
     price: 28000, // 28,000 F CFA
-    image: 'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1606722590583-6951b5ea92ad?w=600&h=600&fit=crop',
     category: 'home',
     tags: ['table', 'kente', 'decor'],
     inStock: true,
@@ -279,7 +279,7 @@ export const products: Product[] = [
     description: 'Set of 3 handwoven baskets in varying sizes.',
     longDescription: 'These beautiful storage baskets are handwoven from natural elephant grass by skilled artisans. Perfect for organizing your home while adding authentic African style. Set includes three nesting sizes.',
     price: 20000, // 20,000 F CFA
-    image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600&h=600&fit=crop',
     category: 'home',
     tags: ['basket', 'storage', 'decor'],
     inStock: true,
@@ -293,7 +293,7 @@ export const products: Product[] = [
     description: 'Vibrant Ankara fabric lampshade to brighten any room.',
     longDescription: 'Light up your space with African style. This drum lampshade is covered in vibrant Ankara fabric, creating a warm and colorful glow when illuminated. Perfect for bedrooms, living rooms, or offices.',
     price: 14000, // 14,000 F CFA
-    image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&h=600&fit=crop',
     category: 'home',
     tags: ['lighting', 'lampshade', 'ankara'],
     inStock: true,

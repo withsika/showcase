@@ -15,7 +15,7 @@ function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=1920&h=1080&fit=crop"
+          src="https://images.unsplash.com/photo-1611091004178-7f10b2b44cf7?w=1920&h=1080&fit=crop"
           alt="African fashion"
           fill
           className="object-cover opacity-40"
