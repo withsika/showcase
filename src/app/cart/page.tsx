@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { getCart, updateQuantity, removeFromCart, getCartTotal, clearCart, CartItem } from '@/lib/cart'
+import { getCart, updateQuantity, removeFromCart, getCartTotal, CartItem } from '@/lib/cart'
 import { formatPrice } from '@/lib/products'
 
 export default function CartPage() {
@@ -53,7 +53,8 @@ export default function CartPage() {
       const data = await response.json()
 
       if (data.checkout_url) {
-        clearCart()
+        // Clear cart silently (don't update UI since we're redirecting)
+        localStorage.removeItem('sika_demo_cart')
         window.location.href = data.checkout_url
       } else {
         alert(data.error || 'Failed to create checkout')
