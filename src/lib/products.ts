@@ -38,14 +38,14 @@ export const categories: Category[] = [
     id: 'cat_women',
     name: 'Women',
     description: 'Elegant dresses, tops, and accessories',
-    image: 'https://images.unsplash.com/photo-1611091004178-7f10b2b44cf7?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=600&h=400&fit=crop',
     slug: 'women',
   },
   {
     id: 'cat_men',
     name: 'Men',
     description: 'Traditional and modern menswear',
-    image: 'https://images.unsplash.com/photo-1621786030484-4c855bbe6742?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=400&fit=crop',
     slug: 'men',
   },
   {
@@ -59,7 +59,7 @@ export const categories: Category[] = [
     id: 'cat_home',
     name: 'Home & Living',
     description: 'Decor and lifestyle essentials',
-    image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1606722590583-6951b5ea92ad?w=600&h=400&fit=crop',
     slug: 'home',
   },
 ]
@@ -72,10 +72,10 @@ export const products: Product[] = [
     description: 'Stunning floor-length dress featuring vibrant African print patterns.',
     longDescription: 'This breathtaking Ankara maxi dress combines traditional African craftsmanship with contemporary design. Made from premium 100% cotton Ankara fabric, it features a flattering fitted bodice that flows into an elegant full skirt. Perfect for special occasions, weddings, or making a statement at any event. The bold geometric patterns tell a story of African heritage while the modern cut ensures you look effortlessly chic.',
     price: 45000, // 45,000 F CFA
-    image: 'https://images.unsplash.com/photo-1611091004178-7f10b2b44cf7?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=600&h=600&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1611091004178-7f10b2b44cf7?w=800&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1611091262453-e3d99d1e13e7?w=800&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=800&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=800&h=800&fit=crop',
     ],
     category: 'women',
     tags: ['dress', 'ankara', 'occasion'],
@@ -119,7 +119,7 @@ export const products: Product[] = [
     description: 'Comfortable tunic with intricate hand embroidery.',
     longDescription: 'Experience the artistry of West African embroidery with this stunning Dashiki tunic. Each piece features hand-stitched details around the neckline and sleeves, making every tunic unique.',
     price: 28000, // 28,000 F CFA
-    image: 'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1544441893-675973e31985?w=600&h=600&fit=crop',
     category: 'women',
     tags: ['tunic', 'dashiki', 'embroidered'],
     inStock: true,
@@ -136,7 +136,7 @@ export const products: Product[] = [
     longDescription: 'Make a grand entrance with this premium Agbada set. Consisting of the flowing outer robe (Agbada), inner shirt (Buba), and matching trousers (Sokoto), this outfit is perfect for weddings, ceremonies, and important celebrations. Crafted from rich Damask fabric with elegant embroidery.',
     price: 95000, // 95,000 F CFA
     compareAtPrice: 115000,
-    image: 'https://images.unsplash.com/photo-1621786030484-4c855bbe6742?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=600&fit=crop',
     category: 'men',
     tags: ['agbada', 'traditional', 'occasion'],
     inStock: true,
@@ -165,7 +165,7 @@ export const products: Product[] = [
     description: 'Elegant kaftan with detailed embroidery work.',
     longDescription: 'This elegant kaftan features exquisite embroidery around the neckline and cuffs. Perfect for Friday prayers, casual outings, or relaxed weekends, it combines comfort with sophistication.',
     price: 35000, // 35,000 F CFA
-    image: 'https://images.unsplash.com/photo-1583391733981-8b530c07a7f0?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&h=600&fit=crop',
     category: 'men',
     tags: ['kaftan', 'traditional', 'embroidered'],
     inStock: true,
@@ -178,7 +178,7 @@ export const products: Product[] = [
     description: 'Classic Nigerian Senator style with modern tailoring.',
     longDescription: 'The Senator suit remains a timeless choice for the modern African man. This two-piece set features clean lines and expert tailoring, perfect for business meetings, formal events, or making an impression.',
     price: 55000, // 55,000 F CFA
-    image: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop',
     category: 'men',
     tags: ['senator', 'formal', 'suit'],
     inStock: true,
@@ -251,7 +251,7 @@ export const products: Product[] = [
     description: 'Authentic Malian mudcloth pillow cover.',
     longDescription: 'Add a touch of African artistry to your home with this authentic mudcloth pillow cover. Made in Mali using traditional techniques passed down through generations, each piece features hand-painted geometric patterns.',
     price: 12000, // 12,000 F CFA
-    image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1606722590583-6951b5ea92ad?w=600&h=600&fit=crop',
     category: 'home',
     tags: ['pillow', 'mudcloth', 'decor'],
     inStock: true,
@@ -265,7 +265,7 @@ export const products: Product[] = [
     description: 'Handwoven Kente cloth table runner.',
     longDescription: 'Transform your dining table with this magnificent Kente cloth table runner. Handwoven by skilled Ghanaian artisans using traditional techniques, it features the iconic geometric patterns that have made Kente famous worldwide.',
     price: 28000, // 28,000 F CFA
-    image: 'https://images.unsplash.com/photo-1606722590583-6951b5ea92ad?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop',
     category: 'home',
     tags: ['table', 'kente', 'decor'],
     inStock: true,
@@ -279,7 +279,7 @@ export const products: Product[] = [
     description: 'Set of 3 handwoven baskets in varying sizes.',
     longDescription: 'These beautiful storage baskets are handwoven from natural elephant grass by skilled artisans. Perfect for organizing your home while adding authentic African style. Set includes three nesting sizes.',
     price: 20000, // 20,000 F CFA
-    image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&h=600&fit=crop',
     category: 'home',
     tags: ['basket', 'storage', 'decor'],
     inStock: true,

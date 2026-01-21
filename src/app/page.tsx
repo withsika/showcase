@@ -15,7 +15,7 @@ function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1611091004178-7f10b2b44cf7?w=1920&h=1080&fit=crop"
+          src="https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=1920&h=1080&fit=crop"
           alt="African fashion"
           fill
           className="object-cover opacity-40"
@@ -171,7 +171,7 @@ function PromoBanner() {
               Use code <span className="font-bold text-white">MALIKA15</span> for 15% off your first order
             </p>
             <p className="text-amber-200 text-sm">
-              *Valid for new customers only. Minimum order GH₵ 100
+              *Valid for new customers only. Minimum order 10 000 F CFA
             </p>
           </div>
           <Link
@@ -265,7 +265,7 @@ function TrustBadges() {
         </svg>
       ),
       title: 'Free Shipping',
-      description: 'On orders over GH₵ 200',
+      description: 'On orders over 25 000 F CFA',
     },
     {
       icon: (
