@@ -121,7 +121,7 @@ export default function CartPage() {
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-medium text-gray-900 truncate">{item.product.name}</h3>
-                <p className="text-sm text-gray-500">{formatPrice(item.product.price, item.product.currency)}</p>
+                <p className="text-sm text-gray-500">{formatPrice(item.product.price)}</p>
                 <div className="flex items-center gap-3 mt-2">
                   <div className="flex items-center border border-gray-200 rounded-lg">
                     <button
@@ -148,7 +148,7 @@ export default function CartPage() {
               </div>
               <div className="text-right">
                 <p className="font-semibold text-gray-900">
-                  {formatPrice(item.product.price * item.quantity, item.product.currency)}
+                  {formatPrice(item.product.price * item.quantity)}
                 </p>
               </div>
             </div>

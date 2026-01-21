@@ -34,7 +34,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <p className="text-sm text-gray-500 mb-4 line-clamp-2">{product.description}</p>
         <div className="flex items-center justify-between">
           <span className="text-lg font-bold text-gray-900">
-            {formatPrice(product.price, product.currency)}
+            {formatPrice(product.price)}
           </span>
           <button
             onClick={handleAddToCart}
