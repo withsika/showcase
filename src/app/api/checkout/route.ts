@@ -17,7 +17,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Get base URL for redirects
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+    // Use BASE_URL (runtime) or NEXT_PUBLIC_BASE_URL (build time) or fallback
+    const baseUrl = process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
 
     // Initialize Sika checkout
     const checkout = await initializeCheckout({
