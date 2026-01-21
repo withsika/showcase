@@ -38,3 +38,11 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
+          secrets: |
+            SIKA_API_URL
+            SIKA_SECRET_KEY
+            BASE_URL
+        env:
+          SIKA_API_URL: ${{ secrets.SIKA_API_URL }}
+          SIKA_SECRET_KEY: ${{ secrets.SIKA_SECRET_KEY }}
+          BASE_URL: ${{ secrets.BASE_URL }}
