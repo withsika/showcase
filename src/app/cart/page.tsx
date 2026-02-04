@@ -11,7 +11,7 @@ import { formatPrice } from '@/lib/products'
 // Declare Sika SDK type
 declare global {
   interface Window {
-    Sika: new (publicKey: string) => {
+    Sika: new (publicKey: string, config?: { checkoutUrl?: string }) => {
       checkout: (options: {
         reference: string
         onSuccess?: (result: { reference: string; status: string }) => void
@@ -23,6 +23,9 @@ declare global {
     }
   }
 }
+
+// Use staging checkout URL for testing embedded checkout
+const CHECKOUT_URL = 'https://pay.staging.withsika.com'
 
 type CheckoutMode = 'redirect' | 'embedded'
 
@@ -99,7 +102,7 @@ export default function CartPage() {
         }
       } else {
         // Embedded flow - open modal using Sika SDK
-        const sika = new window.Sika('sika_test_pk_demo')
+        const sika = new window.Sika('sika_test_pk_demo', { checkoutUrl: CHECKOUT_URL })
         
         sika.checkout({
           reference: data.reference,
