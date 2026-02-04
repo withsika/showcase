@@ -2,16 +2,39 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import Script from 'next/script'
 import { useState, useEffect } from 'react'
-import { getCart, updateQuantity, removeFromCart, getCartTotal, CartItem } from '@/lib/cart'
+import { useRouter } from 'next/navigation'
+import { getCart, updateQuantity, removeFromCart, getCartTotal, clearCart, CartItem } from '@/lib/cart'
 import { formatPrice } from '@/lib/products'
 
+// Declare Sika SDK type
+declare global {
+  interface Window {
+    Sika: new (publicKey: string) => {
+      checkout: (options: {
+        reference: string
+        onSuccess?: (result: { reference: string; status: string }) => void
+        onCancel?: () => void
+        onError?: (error: { reference: string; status: string; message: string }) => void
+        onLoad?: () => void
+      }) => void
+      close: () => void
+    }
+  }
+}
+
+type CheckoutMode = 'redirect' | 'embedded'
+
 export default function CartPage() {
+  const router = useRouter()
   const [cart, setCart] = useState<CartItem[]>([])
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [promoCode, setPromoCode] = useState('')
+  const [checkoutMode, setCheckoutMode] = useState<CheckoutMode>('embedded')
+  const [sdkLoaded, setSdkLoaded] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -36,6 +59,12 @@ export default function CartPage() {
       return
     }
 
+    // For embedded mode, check if SDK is loaded
+    if (checkoutMode === 'embedded' && !sdkLoaded) {
+      alert('Payment SDK is still loading. Please try again.')
+      return
+    }
+
     setIsLoading(true)
 
     try {
@@ -53,17 +82,50 @@ export default function CartPage() {
 
       const data = await response.json()
 
-      if (data.checkout_url) {
-        // Clear cart silently (don't update UI since we're redirecting)
-        localStorage.removeItem('sika_demo_cart')
-        window.location.href = data.checkout_url
-      } else {
+      if (!data.reference) {
         alert(data.error || 'Failed to create checkout')
+        setIsLoading(false)
+        return
+      }
+
+      if (checkoutMode === 'redirect') {
+        // Redirect flow - navigate to checkout URL
+        if (data.checkout_url) {
+          localStorage.removeItem('sika_demo_cart')
+          window.location.href = data.checkout_url
+        } else {
+          alert('Failed to get checkout URL')
+          setIsLoading(false)
+        }
+      } else {
+        // Embedded flow - open modal using Sika SDK
+        const sika = new window.Sika('sika_test_pk_demo')
+        
+        sika.checkout({
+          reference: data.reference,
+          onSuccess: (result) => {
+            console.log('Payment successful:', result)
+            clearCart()
+            router.push(`/checkout/success?reference=${result.reference}`)
+          },
+          onCancel: () => {
+            console.log('Payment cancelled')
+            setIsLoading(false)
+          },
+          onError: (error) => {
+            console.error('Payment error:', error)
+            alert(error.message || 'Payment failed')
+            setIsLoading(false)
+          },
+          onLoad: () => {
+            // Modal is now visible, stop the button loading state
+            setIsLoading(false)
+          },
+        })
       }
     } catch (error) {
       console.error('Checkout error:', error)
       alert('Something went wrong')
-    } finally {
       setIsLoading(false)
     }
   }
@@ -125,6 +187,11 @@ export default function CartPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
+      {/* Load Sika SDK */}
+      <Script 
+        src="https://js.withsika.com/v1/sika.js" 
+        onLoad={() => setSdkLoaded(true)}
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
         <nav className="flex mb-8">
@@ -292,6 +359,42 @@ export default function CartPage() {
                   placeholder="you@example.com"
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none"
                 />
+              </div>
+
+              {/* Checkout Mode Toggle */}
+              <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Checkout Experience
+                </label>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setCheckoutMode('embedded')}
+                    className={`flex-1 px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                      checkoutMode === 'embedded'
+                        ? 'bg-amber-500 text-white'
+                        : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
+                    }`}
+                  >
+                    Embedded
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCheckoutMode('redirect')}
+                    className={`flex-1 px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                      checkoutMode === 'redirect'
+                        ? 'bg-amber-500 text-white'
+                        : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
+                    }`}
+                  >
+                    Redirect
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 mt-2">
+                  {checkoutMode === 'embedded' 
+                    ? 'Pay without leaving this page' 
+                    : 'Redirect to Sika checkout page'}
+                </p>
               </div>
 
               <button
