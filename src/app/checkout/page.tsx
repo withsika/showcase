@@ -55,7 +55,7 @@ function CheckoutContent() {
         body: JSON.stringify({
           email,
           amount: total,
-          description: `${cartItems.length} item${cartItems.length > 1 ? 's' : ''} from Sika Store`,
+          description: `${cartItems.length} item${cartItems.length > 1 ? 's' : ''} from Malika`,
         }),
       })
 

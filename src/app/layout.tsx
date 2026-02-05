@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sika Store | Checkout Demo",
+  title: "Malika | Checkout Demo",
   description: "Demo store showcasing Sika checkout integration",
 };
 
