@@ -115,8 +115,8 @@ function CheckoutContent() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <p className="text-gray-600">{t('cart.empty')}</p>
+      <div className="max-w-7xl mx-auto px-4 py-16 sm:py-20 text-center">
+        <p className="text-sm sm:text-base text-gray-600">{t('cart.empty')}</p>
       </div>
     )
   }
@@ -129,16 +129,16 @@ function CheckoutContent() {
         onLoad={() => setSdkReady(true)}
       />
 
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <h1 className="text-2xl font-bold text-gray-900 mb-8">{t('checkout.title')}</h1>
+      <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8">{t('checkout.title')}</h1>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {/* Order Summary */}
           <div>
-            <h2 className="font-semibold text-gray-900 mb-4">{t('checkout.orderSummary')}</h2>
-            <div className="bg-white rounded-xl border border-gray-200 p-4">
+            <h2 className="font-semibold text-gray-900 text-sm sm:text-base mb-3 sm:mb-4">{t('checkout.orderSummary')}</h2>
+            <div className="bg-white rounded-xl border border-gray-200 p-3 sm:p-4">
               {cartItems.map((item) => (
-                <div key={item.productId} className="flex justify-between py-2">
+                <div key={item.productId} className="flex justify-between py-2 text-sm sm:text-base">
                   <span className="text-gray-600">
                     {t(item.product.nameKey as TranslationKey)} x {item.quantity}
                   </span>
@@ -147,24 +147,24 @@ function CheckoutContent() {
                   </span>
                 </div>
               ))}
-              <div className="border-t border-gray-200 mt-4 pt-4 flex justify-between">
-                <span className="font-semibold text-gray-900">{t('checkout.total')}</span>
-                <span className="font-bold text-gray-900">{formatPrice(total)}</span>
+              <div className="border-t border-gray-200 mt-3 sm:mt-4 pt-3 sm:pt-4 flex justify-between">
+                <span className="font-semibold text-gray-900 text-sm sm:text-base">{t('checkout.total')}</span>
+                <span className="font-bold text-gray-900 text-sm sm:text-base">{formatPrice(total)}</span>
               </div>
             </div>
 
-            <p className="text-sm text-gray-500 mt-4">
+            <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4">
               {t('checkout.email')}: {email}
             </p>
           </div>
 
           {/* Checkout Mode Selection */}
           <div>
-            <h2 className="font-semibold text-gray-900 mb-4">{t('checkout.mode')}</h2>
+            <h2 className="font-semibold text-gray-900 text-sm sm:text-base mb-3 sm:mb-4">{t('checkout.mode')}</h2>
             
-            <div className="space-y-3 mb-6">
+            <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
               <label
-                className={`block p-4 border-2 rounded-xl cursor-pointer transition-colors ${
+                className={`block p-3 sm:p-4 border-2 rounded-xl cursor-pointer transition-colors ${
                   mode === 'redirect'
                     ? 'border-emerald-500 bg-emerald-50'
                     : 'border-gray-200 hover:border-gray-300'
@@ -178,17 +178,17 @@ function CheckoutContent() {
                   onChange={() => setMode('redirect')}
                   className="sr-only"
                 />
-                <div className="flex items-center gap-3">
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
                     mode === 'redirect' ? 'border-emerald-500' : 'border-gray-300'
                   }`}>
                     {mode === 'redirect' && (
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                      <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-500" />
                     )}
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900">{t('checkout.redirect')}</div>
-                    <div className="text-sm text-gray-500">
+                    <div className="font-medium text-gray-900 text-sm sm:text-base">{t('checkout.redirect')}</div>
+                    <div className="text-xs sm:text-sm text-gray-500">
                       {t('checkout.redirectDescription')}
                     </div>
                   </div>
@@ -196,7 +196,7 @@ function CheckoutContent() {
               </label>
 
               <label
-                className={`block p-4 border-2 rounded-xl cursor-pointer transition-colors ${
+                className={`block p-3 sm:p-4 border-2 rounded-xl cursor-pointer transition-colors ${
                   mode === 'modal'
                     ? 'border-emerald-500 bg-emerald-50'
                     : 'border-gray-200 hover:border-gray-300'
@@ -210,17 +210,17 @@ function CheckoutContent() {
                   onChange={() => setMode('modal')}
                   className="sr-only"
                 />
-                <div className="flex items-center gap-3">
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
                     mode === 'modal' ? 'border-emerald-500' : 'border-gray-300'
                   }`}>
                     {mode === 'modal' && (
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                      <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-500" />
                     )}
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900">{t('checkout.modal')}</div>
-                    <div className="text-sm text-gray-500">
+                    <div className="font-medium text-gray-900 text-sm sm:text-base">{t('checkout.modal')}</div>
+                    <div className="text-xs sm:text-sm text-gray-500">
                       {t('checkout.modalDescription')}
                     </div>
                   </div>
@@ -231,11 +231,11 @@ function CheckoutContent() {
             <button
               onClick={handleCheckout}
               disabled={loading || (mode === 'modal' && !sdkReady)}
-              className="w-full py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-2.5 sm:py-3 bg-emerald-600 text-white text-sm sm:text-base font-semibold rounded-lg hover:bg-emerald-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
-                  <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                  <svg className="animate-spin h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                   </svg>
@@ -246,7 +246,7 @@ function CheckoutContent() {
               )}
             </button>
 
-            <p className="text-xs text-gray-500 text-center mt-4">
+            <p className="text-xs text-gray-500 text-center mt-3 sm:mt-4">
               {t('checkout.testCard')}
             </p>
           </div>
@@ -258,7 +258,7 @@ function CheckoutContent() {
 
 export default function CheckoutPage() {
   return (
-    <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-20 text-center">Loading...</div>}>
+    <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-16 sm:py-20 text-center">Loading...</div>}>
       <CheckoutContent />
     </Suspense>
   )
