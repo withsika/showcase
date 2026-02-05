@@ -9,7 +9,7 @@ import { getProduct, formatPrice } from '@/lib/products'
 // TypeScript declaration for the Sika SDK
 declare global {
   interface Window {
-    Sika: new (publicKey: string) => {
+    Sika: new (publicKey: string, config?: { checkoutUrl?: string }) => {
       checkout: (options: {
         reference: string
         onSuccess?: (result: { reference: string; status: string }) => void
@@ -79,7 +79,8 @@ function CheckoutContent() {
           return
         }
 
-        const sika = new window.Sika(publicKey)
+        const checkoutUrl = process.env.NEXT_PUBLIC_SIKA_CHECKOUT_URL
+        const sika = new window.Sika(publicKey, checkoutUrl ? { checkoutUrl } : undefined)
         sika.checkout({
           reference: data.reference,
           onSuccess: (result) => {
