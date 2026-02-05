@@ -1,13 +1,15 @@
 /**
  * Sika API Client
  * 
- * Server-side client for initializing checkouts with the Sika API
+ * Server-side client for initializing checkouts with the Sika API.
+ * This file should only be used in server components or API routes.
  */
 
 const SIKA_API_URL = process.env.SIKA_API_URL || 'https://api.staging.withsika.com'
+const SIKA_CHECKOUT_URL = process.env.SIKA_CHECKOUT_URL || 'https://pay.staging.withsika.com'
 const SIKA_SECRET_KEY = process.env.SIKA_SECRET_KEY
 
-interface CheckoutInitResponse {
+export interface CheckoutInitResponse {
   checkout_url: string
   reference: string
   payment: {
@@ -19,15 +21,22 @@ interface CheckoutInitResponse {
   }
 }
 
-interface CheckoutInitParams {
+export interface CheckoutInitParams {
   email: string
-  amount: number
+  amount: number // Amount in minor units (e.g., cents for USD, pesewas for GHS)
+  currency?: string // ISO 4217 currency code (default: GHS)
   description?: string
   metadata?: Record<string, string>
   success_url: string
   cancel_url: string
 }
 
+/**
+ * Initialize a checkout session with the Sika API
+ * 
+ * @param params - Checkout parameters
+ * @returns Checkout response with checkout_url and reference
+ */
 export async function initializeCheckout(params: CheckoutInitParams): Promise<CheckoutInitResponse> {
   if (!SIKA_SECRET_KEY) {
     throw new Error('SIKA_SECRET_KEY is not configured')
@@ -48,4 +57,19 @@ export async function initializeCheckout(params: CheckoutInitParams): Promise<Ch
   }
 
   return response.json()
+}
+
+/**
+ * Get the base checkout URL for embedding
+ * This is used for iframe/modal integrations
+ */
+export function getCheckoutBaseUrl(): string {
+  return SIKA_CHECKOUT_URL
+}
+
+/**
+ * Build a checkout URL with a reference
+ */
+export function buildCheckoutUrl(reference: string): string {
+  return `${SIKA_CHECKOUT_URL}/${reference}`
 }

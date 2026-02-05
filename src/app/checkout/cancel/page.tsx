@@ -18,7 +18,7 @@ async function CancelContent({
   const { reference } = await searchParams
 
   return (
-    <div className="min-h-[70vh] flex items-center justify-center bg-gray-50">
+    <div className="min-h-[70vh] flex items-center justify-center">
       <div className="text-center max-w-lg mx-auto px-4 py-16">
         {/* Cancel Icon */}
         <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-8">
@@ -38,11 +38,11 @@ async function CancelContent({
         </div>
 
         <h1 className="text-3xl font-bold text-gray-900 mb-3">
-          Payment Cancelled
+          Checkout Cancelled
         </h1>
         <p className="text-gray-600 mb-6 text-lg">
-          Your payment was not completed and no charges were made. 
-          Your cart items are still saved if you&apos;d like to try again.
+          You cancelled the checkout process. No payment was made.
+          Feel free to try again or explore other examples.
         </p>
 
         {reference && (
@@ -52,37 +52,32 @@ async function CancelContent({
           </div>
         )}
 
-        {/* Help Section */}
+        {/* Info Section */}
         <div className="bg-white rounded-xl border border-gray-200 p-6 mb-8 text-left">
-          <h2 className="font-semibold text-gray-900 mb-4">Need help?</h2>
-          <div className="space-y-3 text-sm">
-            <p className="text-gray-600">
-              If you experienced any issues during checkout, here are some things you can try:
+          <h2 className="font-semibold text-gray-900 mb-4">Handling Cancellations</h2>
+          <div className="space-y-3 text-sm text-gray-600">
+            <p>
+              When a user cancels checkout, they&apos;re redirected to your <code className="bg-gray-100 px-1 rounded">cancel_url</code>. 
+              Here&apos;s what you might want to do:
             </p>
-            <ul className="space-y-2 text-gray-600">
+            <ul className="space-y-2">
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-                Ensure your payment details are entered correctly
+                Keep cart items for the user to try again
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-                Check that your card hasn&apos;t expired
+                Show alternative payment methods
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-                Try a different payment method
-              </li>
-              <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                Contact your bank if the issue persists
+                Optionally send an abandoned cart email
               </li>
             </ul>
           </div>
@@ -90,23 +85,23 @@ async function CancelContent({
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-            href="/cart"
-            className="px-8 py-3 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors"
+            href="/#examples"
+            className="px-8 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors"
           >
-            Return to Cart
+            Try More Examples
           </Link>
           <Link
             href="/"
             className="px-8 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
           >
-            Back to Home
+            Back to Showcase
           </Link>
         </div>
 
         {/* Demo Notice */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-sm text-gray-500">
-            This is a demo store. No real payment was attempted.
+            This was a test checkout. No payment was attempted.
           </p>
         </div>
       </div>

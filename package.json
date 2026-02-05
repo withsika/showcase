@@ -1,6 +1,7 @@
 {
-  "name": "demo",
+  "name": "showcase",
   "version": "0.1.0",
+  "description": "Sika Checkout Widget Showcase - Examples of different integration patterns",
   "private": true,
   "scripts": {
     "dev": "next dev",
