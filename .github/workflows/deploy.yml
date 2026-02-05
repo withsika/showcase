@@ -31,7 +31,7 @@ jobs:
           SIKA_API_URL: ${{ secrets.SIKA_API_URL }}
           SIKA_SECRET_KEY: ${{ secrets.SIKA_SECRET_KEY }}
           NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
-          NEXT_PUBLIC_SIKA_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_SIKA_PUBLIC_KEY }}
+          NEXT_PUBLIC_SIKA_PUBLIC_KEY: ${{ secrets.SIKA_PUBLIC_KEY }}
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
