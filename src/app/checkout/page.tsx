@@ -116,7 +116,7 @@ function CheckoutContent() {
   if (cartItems.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-16 sm:py-20 text-center">
-        <p className="text-sm sm:text-base text-gray-600">{t('cart.empty')}</p>
+        <p className="text-base text-gray-600">{t('cart.empty')}</p>
       </div>
     )
   }
@@ -135,10 +135,10 @@ function CheckoutContent() {
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {/* Order Summary */}
           <div>
-            <h2 className="font-semibold text-gray-900 text-sm sm:text-base mb-3 sm:mb-4">{t('checkout.orderSummary')}</h2>
+            <h2 className="font-semibold text-gray-900 text-base mb-3 sm:mb-4">{t('checkout.orderSummary')}</h2>
             <div className="bg-white rounded-xl border border-gray-200 p-3 sm:p-4">
               {cartItems.map((item) => (
-                <div key={item.productId} className="flex justify-between py-2 text-sm sm:text-base">
+                <div key={item.productId} className="flex justify-between py-2 text-base">
                   <span className="text-gray-600">
                     {t(item.product.nameKey as TranslationKey)} x {item.quantity}
                   </span>
@@ -148,19 +148,19 @@ function CheckoutContent() {
                 </div>
               ))}
               <div className="border-t border-gray-200 mt-3 sm:mt-4 pt-3 sm:pt-4 flex justify-between">
-                <span className="font-semibold text-gray-900 text-sm sm:text-base">{t('checkout.total')}</span>
-                <span className="font-bold text-gray-900 text-sm sm:text-base">{formatPrice(total)}</span>
+                <span className="font-semibold text-gray-900 text-base">{t('checkout.total')}</span>
+                <span className="font-bold text-gray-900 text-base">{formatPrice(total)}</span>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4">
+            <p className="text-base text-gray-500 mt-3 sm:mt-4">
               {t('checkout.email')}: {email}
             </p>
           </div>
 
           {/* Checkout Mode Selection */}
           <div>
-            <h2 className="font-semibold text-gray-900 text-sm sm:text-base mb-3 sm:mb-4">{t('checkout.mode')}</h2>
+            <h2 className="font-semibold text-gray-900 text-base mb-3 sm:mb-4">{t('checkout.mode')}</h2>
             
             <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
               <label
@@ -187,10 +187,10 @@ function CheckoutContent() {
                     )}
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900 text-sm sm:text-base">{t('checkout.redirect')}</div>
-                    <div className="text-xs sm:text-sm text-gray-500">
-                      {t('checkout.redirectDescription')}
-                    </div>
+<div className="font-medium text-gray-900 text-base">{t('checkout.redirect')}</div>
+                                    <div className="text-base text-gray-500">
+                                      {t('checkout.redirectDescription')}
+                                    </div>
                   </div>
                 </div>
               </label>
@@ -219,10 +219,10 @@ function CheckoutContent() {
                     )}
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900 text-sm sm:text-base">{t('checkout.modal')}</div>
-                    <div className="text-xs sm:text-sm text-gray-500">
-                      {t('checkout.modalDescription')}
-                    </div>
+<div className="font-medium text-gray-900 text-base">{t('checkout.modal')}</div>
+                                    <div className="text-base text-gray-500">
+                                      {t('checkout.modalDescription')}
+                                    </div>
                   </div>
                 </div>
               </label>
@@ -231,7 +231,7 @@ function CheckoutContent() {
             <button
               onClick={handleCheckout}
               disabled={loading || (mode === 'modal' && !sdkReady)}
-              className="w-full py-2.5 sm:py-3 bg-emerald-600 text-white text-sm sm:text-base font-semibold rounded-lg hover:bg-emerald-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-2.5 sm:py-3 bg-emerald-600 text-white text-base font-semibold rounded-lg hover:bg-emerald-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -254,7 +254,7 @@ function CheckoutContent() {
               )}
             </button>
 
-            <p className="text-xs text-gray-500 text-center mt-3 sm:mt-4">
+            <p className="text-base text-gray-500 text-center mt-3 sm:mt-4">
               {t('checkout.testCard')}
             </p>
           </div>

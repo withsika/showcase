@@ -24,8 +24,8 @@ function SuccessContent() {
 
         {reference && (
           <div className="bg-gray-50 rounded-lg p-3 mb-6">
-            <p className="text-xs text-gray-500 mb-1">{t('success.reference')}</p>
-            <code className="text-sm font-mono text-gray-900">{reference}</code>
+            <p className="text-base text-gray-500 mb-1">{t('success.reference')}</p>
+            <code className="text-base font-mono text-gray-900">{reference}</code>
           </div>
         )}
 
@@ -36,7 +36,7 @@ function SuccessContent() {
           {t('success.continueShopping')}
         </Link>
 
-        <p className="text-xs text-gray-400 mt-8">
+        <p className="text-base text-gray-400 mt-8">
           {t('success.demo')}
         </p>
       </div>

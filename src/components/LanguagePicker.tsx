@@ -30,7 +30,7 @@ export function LanguagePicker() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100 focus:outline-none transition-colors"
+        className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-base font-medium text-gray-600 hover:bg-gray-100 focus:outline-none transition-colors"
       >
         <span className="uppercase">{locale}</span>
         <svg
@@ -48,7 +48,7 @@ export function LanguagePicker() {
           <div className="py-1">
             <button
               onClick={() => handleSelect('en')}
-              className={`w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors ${
+              className={`w-full px-4 py-2 text-left text-base hover:bg-gray-50 transition-colors ${
                 locale === 'en' ? 'font-semibold text-gray-900' : 'text-gray-600'
               }`}
             >
@@ -56,7 +56,7 @@ export function LanguagePicker() {
             </button>
             <button
               onClick={() => handleSelect('fr')}
-              className={`w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors ${
+              className={`w-full px-4 py-2 text-left text-base hover:bg-gray-50 transition-colors ${
                 locale === 'fr' ? 'font-semibold text-gray-900' : 'text-gray-600'
               }`}
             >

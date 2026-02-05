@@ -31,10 +31,10 @@ export default function CartPage() {
     return (
       <div className="max-w-7xl mx-auto px-4 py-16 sm:py-20 text-center">
         <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">{t('cart.empty')}</h1>
-        <p className="text-sm sm:text-base text-gray-600 mb-6">{t('cart.emptySubtitle')}</p>
+        <p className="text-base text-gray-600 mb-6">{t('cart.emptySubtitle')}</p>
         <Link
           href="/"
-          className="inline-block px-5 sm:px-6 py-2.5 sm:py-3 bg-emerald-600 text-white text-sm sm:text-base font-medium rounded-lg hover:bg-emerald-700"
+          className="inline-block px-5 sm:px-6 py-2.5 sm:py-3 bg-emerald-600 text-white text-base font-medium rounded-lg hover:bg-emerald-700"
         >
           {t('cart.continueShopping')}
         </Link>
@@ -61,30 +61,30 @@ export default function CartPage() {
               <div className="flex-1 min-w-0">
                 <div className="flex justify-between items-start gap-2">
                   <div>
-                    <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{t(item.product.nameKey as TranslationKey)}</h3>
-                    <p className="text-xs sm:text-sm text-gray-500">{formatPrice(item.product.price)}</p>
+                    <h3 className="font-semibold text-gray-900 text-base">{t(item.product.nameKey as TranslationKey)}</h3>
+                    <p className="text-base text-gray-500">{formatPrice(item.product.price)}</p>
                   </div>
-                  <span className="font-semibold text-gray-900 text-sm sm:text-base whitespace-nowrap">
+                  <span className="font-semibold text-gray-900 text-base whitespace-nowrap">
                     {formatPrice(item.product.price * item.quantity)}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3 mt-2 sm:mt-3">
                   <button
                     onClick={() => updateQuantity(item.productId, item.quantity - 1)}
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-50 text-sm"
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-50 text-base"
                   >
                     -
                   </button>
-                  <span className="text-sm font-medium w-6 text-center">{item.quantity}</span>
+                  <span className="text-base font-medium w-6 text-center">{item.quantity}</span>
                   <button
                     onClick={() => updateQuantity(item.productId, item.quantity + 1)}
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-50 text-sm"
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-50 text-base"
                   >
                     +
                   </button>
                   <button
                     onClick={() => removeFromCart(item.productId)}
-                    className="ml-auto text-xs sm:text-sm text-red-600 hover:text-red-700"
+                    className="ml-auto text-base text-red-600 hover:text-red-700"
                   >
                     {t('cart.remove')}
                   </button>
@@ -102,7 +102,7 @@ export default function CartPage() {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="email" className="block text-base font-medium text-gray-700 mb-2">
             {t('cart.email')}
           </label>
           <input
@@ -111,7 +111,7 @@ export default function CartPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t('cart.emailPlaceholder')}
-            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
           />
         </div>
 
@@ -123,7 +123,7 @@ export default function CartPage() {
               alert(t('cart.emailRequired'))
             }
           }}
-          className="block w-full py-2.5 sm:py-3 bg-emerald-600 text-white text-center text-sm sm:text-base font-semibold rounded-lg hover:bg-emerald-700 transition-colors"
+          className="block w-full py-2.5 sm:py-3 bg-emerald-600 text-white text-center text-base font-semibold rounded-lg hover:bg-emerald-700 transition-colors"
         >
           {t('cart.proceedToCheckout')}
         </Link>
