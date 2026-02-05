@@ -1,19 +1,14 @@
+'use client'
+
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
+import { useI18n } from '@/lib/i18n'
 
-export default function CheckoutSuccessPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ reference?: string }>
-}) {
-  return <SuccessContent searchParams={searchParams} />
-}
-
-async function SuccessContent({
-  searchParams,
-}: {
-  searchParams: Promise<{ reference?: string }>
-}) {
-  const { reference } = await searchParams
+function SuccessContent() {
+  const { t } = useI18n()
+  const searchParams = useSearchParams()
+  const reference = searchParams.get('reference')
 
   return (
     <div className="min-h-[60vh] flex items-center justify-center">
@@ -24,12 +19,12 @@ async function SuccessContent({
           </svg>
         </div>
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Payment Successful!</h1>
-        <p className="text-gray-600 mb-6">Thank you for your order.</p>
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">{t('success.title')}</h1>
+        <p className="text-gray-600 mb-6">{t('success.message')}</p>
 
         {reference && (
           <div className="bg-gray-50 rounded-lg p-3 mb-6">
-            <p className="text-xs text-gray-500 mb-1">Reference</p>
+            <p className="text-xs text-gray-500 mb-1">{t('success.reference')}</p>
             <code className="text-sm font-mono text-gray-900">{reference}</code>
           </div>
         )}
@@ -38,13 +33,21 @@ async function SuccessContent({
           href="/"
           className="inline-block px-6 py-3 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700"
         >
-          Continue Shopping
+          {t('success.continueShopping')}
         </Link>
 
         <p className="text-xs text-gray-400 mt-8">
-          This is a demo. No real payment was made.
+          {t('success.demo')}
         </p>
       </div>
     </div>
+  )
+}
+
+export default function CheckoutSuccessPage() {
+  return (
+    <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-20 text-center">Loading...</div>}>
+      <SuccessContent />
+    </Suspense>
   )
 }

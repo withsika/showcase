@@ -5,6 +5,8 @@ import { Suspense, useState, useEffect, useCallback } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { getCart, clearCart, CartItem } from '@/lib/cart'
 import { getProduct, formatPrice } from '@/lib/products'
+import { useI18n } from '@/lib/i18n'
+import { TranslationKey } from '@/lib/i18n/translations'
 
 // TypeScript declaration for the Sika SDK
 declare global {
@@ -25,6 +27,7 @@ declare global {
 type CheckoutMode = 'redirect' | 'modal'
 
 function CheckoutContent() {
+  const { t } = useI18n()
   const searchParams = useSearchParams()
   const router = useRouter()
   const email = searchParams.get('email') || ''
@@ -62,7 +65,7 @@ function CheckoutContent() {
       const data = await response.json()
 
       if (!data.reference) {
-        alert('Failed to create checkout session')
+        alert(t('checkout.sessionFailed'))
         return
       }
 
@@ -75,7 +78,7 @@ function CheckoutContent() {
         const publicKey = process.env.NEXT_PUBLIC_SIKA_PUBLIC_KEY
         if (!publicKey) {
           console.error('NEXT_PUBLIC_SIKA_PUBLIC_KEY is not configured')
-          alert('Checkout not configured. Please try redirect mode.')
+          alert(t('checkout.notConfigured'))
           return
         }
 
@@ -92,7 +95,7 @@ function CheckoutContent() {
           },
           onError: (error) => {
             console.error('Payment failed:', error.message)
-            alert(`Payment failed: ${error.message}`)
+            alert(`${t('checkout.failed')}: ${error.message}`)
             setLoading(false)
           },
           onLoad: () => {
@@ -102,18 +105,18 @@ function CheckoutContent() {
       }
     } catch (error) {
       console.error('Checkout error:', error)
-      alert('Checkout failed. Please try again.')
+      alert(t('checkout.failed'))
     } finally {
       if (mode === 'redirect') {
         setLoading(false)
       }
     }
-  }, [email, total, cartItems.length, mode, router])
+  }, [email, total, cartItems.length, mode, router, t])
 
   if (cartItems.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <p className="text-gray-600">Your cart is empty</p>
+        <p className="text-gray-600">{t('cart.empty')}</p>
       </div>
     )
   }
@@ -127,17 +130,17 @@ function CheckoutContent() {
       />
 
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <h1 className="text-2xl font-bold text-gray-900 mb-8">Checkout</h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-8">{t('checkout.title')}</h1>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Order Summary */}
           <div>
-            <h2 className="font-semibold text-gray-900 mb-4">Order Summary</h2>
+            <h2 className="font-semibold text-gray-900 mb-4">{t('checkout.orderSummary')}</h2>
             <div className="bg-white rounded-xl border border-gray-200 p-4">
               {cartItems.map((item) => (
                 <div key={item.productId} className="flex justify-between py-2">
                   <span className="text-gray-600">
-                    {item.product.name} x {item.quantity}
+                    {t(item.product.nameKey as TranslationKey)} x {item.quantity}
                   </span>
                   <span className="font-medium text-gray-900">
                     {formatPrice(item.product.price * item.quantity)}
@@ -145,19 +148,19 @@ function CheckoutContent() {
                 </div>
               ))}
               <div className="border-t border-gray-200 mt-4 pt-4 flex justify-between">
-                <span className="font-semibold text-gray-900">Total</span>
+                <span className="font-semibold text-gray-900">{t('checkout.total')}</span>
                 <span className="font-bold text-gray-900">{formatPrice(total)}</span>
               </div>
             </div>
 
             <p className="text-sm text-gray-500 mt-4">
-              Email: {email}
+              {t('checkout.email')}: {email}
             </p>
           </div>
 
           {/* Checkout Mode Selection */}
           <div>
-            <h2 className="font-semibold text-gray-900 mb-4">Checkout Mode</h2>
+            <h2 className="font-semibold text-gray-900 mb-4">{t('checkout.mode')}</h2>
             
             <div className="space-y-3 mb-6">
               <label
@@ -184,9 +187,9 @@ function CheckoutContent() {
                     )}
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900">Redirect</div>
+                    <div className="font-medium text-gray-900">{t('checkout.redirect')}</div>
                     <div className="text-sm text-gray-500">
-                      Go to Sika&apos;s hosted checkout page
+                      {t('checkout.redirectDescription')}
                     </div>
                   </div>
                 </div>
@@ -216,9 +219,9 @@ function CheckoutContent() {
                     )}
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900">Modal</div>
+                    <div className="font-medium text-gray-900">{t('checkout.modal')}</div>
                     <div className="text-sm text-gray-500">
-                      Pay without leaving this page
+                      {t('checkout.modalDescription')}
                     </div>
                   </div>
                 </div>
@@ -236,15 +239,15 @@ function CheckoutContent() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                   </svg>
-                  Processing...
+                  {t('checkout.processing')}
                 </>
               ) : (
-                `Pay ${formatPrice(total)}`
+                `${t('checkout.pay')} ${formatPrice(total)}`
               )}
             </button>
 
             <p className="text-xs text-gray-500 text-center mt-4">
-              Test card: 4084 0840 8408 4081
+              {t('checkout.testCard')}
             </p>
           </div>
         </div>

@@ -1,6 +1,11 @@
+'use client'
+
 import Link from 'next/link'
+import { useI18n } from '@/lib/i18n'
 
 export default function CheckoutCancelPage() {
+  const { t } = useI18n()
+
   return (
     <div className="min-h-[60vh] flex items-center justify-center">
       <div className="text-center max-w-md mx-auto px-4 py-16">
@@ -10,21 +15,21 @@ export default function CheckoutCancelPage() {
           </svg>
         </div>
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Checkout Cancelled</h1>
-        <p className="text-gray-600 mb-6">Your payment was not completed.</p>
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">{t('cancel.title')}</h1>
+        <p className="text-gray-600 mb-6">{t('cancel.message')}</p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/cart"
             className="px-6 py-3 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700"
           >
-            Return to Cart
+            {t('cancel.returnToCart')}
           </Link>
           <Link
             href="/"
             className="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200"
           >
-            Continue Shopping
+            {t('cancel.continueShopping')}
           </Link>
         </div>
       </div>

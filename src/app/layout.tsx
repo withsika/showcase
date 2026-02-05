@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { I18nProvider } from "@/lib/i18n";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,18 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased min-h-screen flex flex-col bg-gray-50`}>
-        <Header />
-        <main className="flex-1">
-          {children}
-        </main>
-        <footer className="bg-white border-t border-gray-200 py-6">
-          <div className="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
-            Demo store powered by{' '}
-            <a href="https://withsika.com" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">
-              Sika
-            </a>
-          </div>
-        </footer>
+        <I18nProvider>
+          <Header />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </I18nProvider>
       </body>
     </html>
   );

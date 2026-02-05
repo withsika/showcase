@@ -5,8 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getCart, updateQuantity, removeFromCart, CartItem } from '@/lib/cart'
 import { getProduct, formatPrice } from '@/lib/products'
+import { useI18n } from '@/lib/i18n'
+import { TranslationKey } from '@/lib/i18n/translations'
 
 export default function CartPage() {
+  const { t } = useI18n()
   const [cart, setCart] = useState<CartItem[]>([])
   const [email, setEmail] = useState('')
 
@@ -27,13 +30,13 @@ export default function CartPage() {
   if (cartItems.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">Your cart is empty</h1>
-        <p className="text-gray-600 mb-6">Add some products to get started</p>
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">{t('cart.empty')}</h1>
+        <p className="text-gray-600 mb-6">{t('cart.emptySubtitle')}</p>
         <Link
           href="/"
           className="inline-block px-6 py-3 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700"
         >
-          Continue Shopping
+          {t('cart.continueShopping')}
         </Link>
       </div>
     )
@@ -41,7 +44,7 @@ export default function CartPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="text-2xl font-bold text-gray-900 mb-8">Your Cart</h1>
+      <h1 className="text-2xl font-bold text-gray-900 mb-8">{t('cart.title')}</h1>
 
       <div className="bg-white rounded-xl border border-gray-200 divide-y divide-gray-200 mb-6">
         {cartItems.map((item) => (
@@ -49,13 +52,13 @@ export default function CartPage() {
             <div className="w-20 h-20 relative bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
               <Image
                 src={item.product.image}
-                alt={item.product.name}
+                alt={t(item.product.nameKey as TranslationKey)}
                 fill
                 className="object-cover"
               />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-gray-900">{item.product.name}</h3>
+              <h3 className="font-semibold text-gray-900">{t(item.product.nameKey as TranslationKey)}</h3>
               <p className="text-sm text-gray-500">{formatPrice(item.product.price)}</p>
               <div className="flex items-center gap-3 mt-2">
                 <button
@@ -75,7 +78,7 @@ export default function CartPage() {
                   onClick={() => removeFromCart(item.productId)}
                   className="ml-auto text-sm text-red-600 hover:text-red-700"
                 >
-                  Remove
+                  {t('cart.remove')}
                 </button>
               </div>
             </div>
@@ -90,20 +93,20 @@ export default function CartPage() {
 
       <div className="bg-white rounded-xl border border-gray-200 p-6">
         <div className="flex justify-between text-lg font-bold text-gray-900 mb-6">
-          <span>Total</span>
+          <span>{t('cart.total')}</span>
           <span>{formatPrice(total)}</span>
         </div>
 
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-            Email address
+            {t('cart.email')}
           </label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
+            placeholder={t('cart.emailPlaceholder')}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
           />
         </div>
@@ -113,12 +116,12 @@ export default function CartPage() {
           onClick={(e) => {
             if (!email) {
               e.preventDefault()
-              alert('Please enter your email address')
+              alert(t('cart.emailRequired'))
             }
           }}
           className="block w-full py-3 bg-emerald-600 text-white text-center font-semibold rounded-lg hover:bg-emerald-700 transition-colors"
         >
-          Proceed to Checkout
+          {t('cart.proceedToCheckout')}
         </Link>
       </div>
     </div>
