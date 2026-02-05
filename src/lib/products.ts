@@ -43,5 +43,6 @@ export function getProduct(id: string): Product | undefined {
 
 export function formatPrice(amount: number): string {
   // XOF doesn't use decimal places, so divide by 100 and format as integer
-  return `${Math.round(amount / 100).toLocaleString('fr-FR')} FCFA`
+  // Use space as thousand separator (French style)
+  return `${Math.round(amount / 100).toLocaleString('fr-FR').replace(/\u202F/g, ' ')} FCFA`
 }
