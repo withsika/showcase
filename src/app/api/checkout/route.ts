@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
 
     if (!body.amount || body.amount < 100) {
       return NextResponse.json(
-        { error: 'Amount must be at least 100 (GHS 1.00)' },
+        { error: 'Amount must be at least 100' },
         { status: 400 }
       )
     }
@@ -33,7 +33,8 @@ export async function POST(request: NextRequest) {
     const checkout = await initializeCheckout({
       email: body.email,
       amount: body.amount,
-      description: body.description || 'Sika Showcase Demo',
+      currency: 'XOF',
+      description: body.description || 'Malika Store',
       metadata: body.metadata,
       success_url: `${baseUrl}/checkout/success?reference={reference}`,
       cancel_url: `${baseUrl}/checkout/cancel?reference={reference}`,
