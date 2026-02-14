@@ -29,6 +29,7 @@ export interface CheckoutInitParams {
   metadata?: Record<string, string>
   success_url: string
   cancel_url: string
+  locale?: string // Customer's preferred locale for emails (e.g., "en" or "fr")
 }
 
 /**

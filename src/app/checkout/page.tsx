@@ -27,7 +27,7 @@ declare global {
 type CheckoutMode = 'redirect' | 'modal'
 
 function CheckoutContent() {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
   const searchParams = useSearchParams()
   const router = useRouter()
   const email = searchParams.get('email') || ''
@@ -59,6 +59,7 @@ function CheckoutContent() {
           email,
           amount: total,
           description: `${cartItems.length} item${cartItems.length > 1 ? 's' : ''} from Malika`,
+          locale,
         }),
       })
 
@@ -111,7 +112,7 @@ function CheckoutContent() {
         setLoading(false)
       }
     }
-  }, [email, total, cartItems.length, mode, router, t])
+  }, [email, total, cartItems.length, mode, router, t, locale])
 
   if (cartItems.length === 0) {
     return (

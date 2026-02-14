@@ -6,6 +6,7 @@ interface CheckoutRequest {
   amount: number
   description?: string
   metadata?: Record<string, string>
+  locale?: string
 }
 
 export async function POST(request: NextRequest) {
@@ -38,6 +39,7 @@ export async function POST(request: NextRequest) {
       metadata: body.metadata,
       success_url: `${baseUrl}/checkout/success?reference={reference}`,
       cancel_url: `${baseUrl}/checkout/cancel?reference={reference}`,
+      locale: body.locale,
     })
 
     return NextResponse.json(checkout)
